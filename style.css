@@ -7,12 +7,8 @@ variables are available to be used anywhere in our html document
 :root {
     --white-font: #FFFFFF;
     --black-font: #000000;
-    --colour1: #D1C6AD;
-    --colour2: #BBADA0;
-    --colour3: #A1869E;
-    --colour4: #797596;
-    --colour5: #0B1D51;
-    /* add in other color variables for color pallete */
+    --colour1: #03045E;
+    --colour2: #CAF0F8;
 }
 
 /* Defines the main container size, we are limiting to 72em max and centring in the viewport */
@@ -25,121 +21,89 @@ variables are available to be used anywhere in our html document
 
 /* Here we define the aspects of style of our elements other than their grid layout */
 .banner {
-    /* TODO: banner styling */
-    background-color: var(--colour4);
+    background-color: var(--colour1);
     padding: 1em;
 }
 
 .banner-title {
-    /* TODO: banner main title font styling */
     font-size: 3em;
 }
 
 .banner-subtitle {
-    /* TODO: banner subtitle font styling */
     font-size: 2.25em;
     padding-left: .2rem;
 }
 
-.team-member-card {
-    /* TODO: style the card as a column based flexbox with rounded corners */
-    background-color: var(--colour3);
+.card {
+    background-color: var(--colour2);
     font-size: 1rem;
-    border-radius: 1em;
-}
-
-/* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
-.team-member-card-image {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    border-radius: 1em 1em 0 0;
+    border-radius: 1em; /* This curves the corners of the container */
 }
 
-.team-member-card-blurb {
-    /* TODO: style the blurb with padding */
-    padding: 1em;
-}
-
-.our-clients-title {
-    /* TODO: style the 'Our Clients' text font */
-    background-color: var(--colour1);
-    color: var(--colour3);
-    font-size: 4rem;
-    text-align: center;
-    border-radius: 1rem;
-    padding: 1rem;
-}
-
-/* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
-.client-icon {
+.card-image {
     width: 100%;
+    height: 24em;
+    object-fit: cover; /* This stops the images from being stretched to fill the area */
+    border-radius: 1em 1em 0 0; /* This curves the top 2 corners of the image */
 }
 
-/* now we create names for the grid areas for specific elements */
+.card-blurb {
+    padding: 1em;
+    text-align: center;
+    color: var(--black-font);
+}
+
+.footer {
+    background-color: var(--colour1);
+    font-size: 20px;
+    text-align: center;
+}
+
+#cardImage7 {
+    object-position: 50% 70%; /* This changes the anchor point on image7 */ 
+}
+
+/* Now we create names for the grid areas for specific elements */
 #banner {
-    /* TODO: give the grid-area a name */
     grid-area: ban;
 }
 
-#teamMemberCard1 {
-    /* TODO: give the grid-area a name */
-    grid-area: tm1;
+#card1 {
+    grid-area: c1;
 }
 
-#teamMemberCard2 {
-    /* TODO: give the grid-area a name */
-    grid-area: tm2;
+#card2 {
+    grid-area: c2;
 }
 
-#teamMemberCard3 {
-    /* TODO: give the grid-area a name */
-    grid-area: tm3;
+#card3 {
+    grid-area: c3;
 }
 
-#ourClientsTitle {
-    /* TODO: give the grid-area a name */
-    grid-area: oct;
+#card4 {
+    grid-area: c4;
 }
 
-#clientIcon1 {
-    /* TODO: give the grid-area a name */
-    grid-area: ci1;
+#card5 {
+    grid-area: c5;
 }
 
-#clientIcon2 {
-    /* TODO: give the grid-area a name */
-    grid-area: ci2;
+#card6 {
+    grid-area: c6;
 }
 
-#clientIcon3 {
-    /* TODO: give the grid-area a name */
-    grid-area: ci3;
+#card7 {
+    grid-area: c7;
 }
 
-#clientIcon4 {
-    /* TODO: give the grid-area a name */
-    grid-area: ci4;
+#card8 {
+    grid-area: c8;
 }
 
-#clientIcon5 {
-    /* TODO: give the grid-area a name */
-    grid-area: ci5;
-}
-
-#clientIcon6 {
-    /* TODO: give the grid-area a name */
-    grid-area: ci6;
-}
-
-#clientIcon7 {
-    /* TODO: give the grid-area a name */
-    grid-area: ci7;
-}
-
-#clientIcon8 {
-    /* TODO: give the grid-area a name */
-    grid-area: ci8;
+#footer {
+    grid-area: foo;
 }
 
 /* Use a flexible layout grid */
@@ -155,55 +119,58 @@ Because this CSS definition comes first, it will apply by default. Then we overr
 media queries for progressively bigger screen widths
 */
 .main-container {
-    /* TODO: setup the grid-template for mobile phone layout */
     grid-template:
         "ban ban ban ban" minmax(6em, auto)
         " .   .   .   . " minmax(2em, auto)
-        "tm1 tm1 tm1 tm1" minmax(30em, auto)
+        " c1  c1  c1  c1" minmax(30em, auto)
         " .   .   .   . " minmax(2em, auto)
-        "tm2 tm2 tm2 tm2" minmax(30em, auto)
+        " c2  c2  c2  c2" minmax(30em, auto)
         " .   .   .   . " minmax(2em, auto)
-        "tm3 tm3 tm3 tm3" minmax(30em, auto)
-        " .   .   .   . " minmax(4em, auto)
-        "oct oct oct oct" minmax(6em, auto)
+        " c3  c3  c3  c3" minmax(30em, auto)
         " .   .   .   . " minmax(2em, auto)
-        "ci1 ci1 ci2 ci2" minmax(8em, auto)
-        "ci3 ci3 ci4 ci4" minmax(8em, auto)
-        "ci5 ci5 ci6 ci6" minmax(8em, auto)
-        "ci7 ci7 ci8 ci8" minmax(8em, auto);
+        " c4  c4  c4  c4" minmax(30em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c5  c5  c5  c5" minmax(30em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c6  c6  c6  c6" minmax(30em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c7  c7  c7  c7" minmax(30em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        " c8  c8  c8  c8" minmax(30em, auto)
+        " .   .   .   . " minmax(2em, auto)
+        "foo foo foo foo" minmax(6em, auto);
 }
 
 @media (min-width: 50em) {
     .main-container {
-            /* TODO: setup the grid-template for tablet layout */
         grid-template:
             "ban ban ban ban ban ban ban ban" minmax(8em, auto)
             " .   .   .   .   .   .   .   . " minmax(2em, auto)
-            "tm1 tm1 tm1 tm1 tm2 tm2 tm2 tm2" minmax(30em, auto)
+            " c1  c1  c1  c1  c2  c2  c2  c2" minmax(30em, auto)
             " .   .   .   .   .   .   .   . " minmax(2em, auto)
-            " .   .  tm3 tm3 tm3 tm3  .   . " minmax(30em, auto)
-            " .   .   .   .   .   .   .   . " minmax(4em, auto)
-            "oct oct oct oct oct oct oct oct" minmax(2em, auto)
+            " c3  c3  c3  c3  c4  c4  c4  c4" minmax(30em, auto)
             " .   .   .   .   .   .   .   . " minmax(2em, auto)
-            "ci1 ci1 ci1 ci1 ci2 ci2 ci2 ci2" minmax(16em, auto)
-            "ci3 ci3 ci3 ci3 ci4 ci4 ci4 ci4" minmax(16em, auto)
-            "ci5 ci5 ci5 ci5 ci6 ci6 ci6 ci6" minmax(16em, auto)
-            "ci7 ci7 ci7 ci7 ci8 ci8 ci8 ci8" minmax(16em, auto);
+            " c5  c5  c5  c5  c6  c6  c6  c6" minmax(30em, auto)
+            " .   .   .   .   .   .   .   . " minmax(2em, auto)
+            " c7  c7  c7  c7  c8  c8  c8  c8" minmax(30em, auto)
+            " .   .   .   .   .   .   .   . " minmax(2em, auto)
+            "foo foo foo foo foo foo foo foo" minmax(6em, auto);
     }
 }
 
 @media (min-width: 75em) {
     .main-container {
-        /* TODO: setup the grid-template for desktop layout */
         grid-template:
             "ban ban ban ban ban ban ban ban ban ban ban ban" minmax(8em, auto)
             " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
-            "tm1 tm1 tm1 tm1 tm2 tm2 tm2 tm2 tm3 tm3 tm3 tm3" minmax(32em, auto)
-            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(4em, auto)
-            "oct oct oct oct oct oct oct oct oct oct oct oct" minmax(2em, auto)
+            " c1  c1  c1  c1  c1  c1  c2  c2  c2  c2  c2  c2" minmax(30em, auto)
             " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
-            "ci1 ci1 ci1 ci2 ci2 ci2 ci3 ci3 ci3 ci4 ci4 ci4" minmax(8em, auto)
-            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(1em, auto)
-            "ci5 ci5 ci5 ci6 ci6 ci6 ci7 ci7 ci7 ci8 ci8 ci8" minmax(8em, auto);
+            " c3  c3  c3  c3  c3  c3  c4  c4  c4  c4  c4  c4" minmax(30em, auto)
+            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
+            " c5  c5  c5  c5  c5  c5  c6  c6  c6  c6  c6  c6" minmax(30em, auto)
+            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
+            " c7  c7  c7  c7  c7  c7  c8  c8  c8  c8  c8  c8" minmax(30em, auto)
+            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
+            "foo foo foo foo foo foo foo foo foo foo foo foo" minmax(6em, auto);
     }
 }
