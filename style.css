@@ -1,9 +1,4 @@
- /* 
-Color pallete. This section defines variables for the color pallete,
-so that we can refer to particular colors by name instead of hexadecimal values.
-This is applied to the 'root' psuedo-element, which just means that these color
-variables are available to be used anywhere in our html document
-*/
+/* Variables */
 :root {
     --white-font: #FFFFFF;
     --black-font: #000000;
@@ -11,7 +6,7 @@ variables are available to be used anywhere in our html document
     --colour2: #CAF0F8;
 }
 
-/* Defines the main container size, we are limiting to 72em max and centring in the viewport */
+/* Limiting the main-container to 72em max width and centring in the viewport */
 .main-container {
     max-width: 72em;
     margin: 0 auto;
@@ -19,7 +14,6 @@ variables are available to be used anywhere in our html document
     color: var(--white-font);
 }
 
-/* Here we define the aspects of style of our elements other than their grid layout */
 .banner {
     background-color: var(--colour1);
     padding: 1em;
@@ -51,13 +45,14 @@ variables are available to be used anywhere in our html document
 
 .card-blurb {
     padding: 1em;
+    padding-top: 1.3em;
     text-align: center;
     color: var(--black-font);
 }
 
 .footer {
     background-color: var(--colour1);
-    font-size: 20px;
+    font-size: 1.25em;
     text-align: center;
     padding-top: 2.25rem;
 }
@@ -66,7 +61,7 @@ variables are available to be used anywhere in our html document
     object-position: 50% 70%; /* This changes the anchor point on image7 */ 
 }
 
-/* Now we create names for the grid areas for specific elements */
+/* Names for the grid areas for specific elements */
 #banner {
     grid-area: ban;
 }
@@ -87,6 +82,21 @@ variables are available to be used anywhere in our html document
     grid-area: c4;
 }
 
+#cardImage4 {
+    grid-area: ci4;
+}
+
+#cardBlurb4 {
+    grid-area: cb4;
+    display: flex; /* This is to center the text */
+    justify-content: center;
+    align-items: center;
+}
+
+#cardCredit4 {
+    grid-area: cc4;
+}
+
 #card5 {
     grid-area: c5;
 }
@@ -103,75 +113,124 @@ variables are available to be used anywhere in our html document
     grid-area: c8;
 }
 
+#cardImage8 {
+    grid-area: ci8;
+}
+
+#cardBlurb8 {
+    grid-area: cb8;
+    display: flex; /* This is to center the text */
+    justify-content: center;
+    align-items: center;
+}
+
+#cardCredit8 {
+    grid-area: cc8;
+}
+
 #footer {
     grid-area: foo;
 }
-
-/* Use a flexible layout grid */
+  
+/* Mobile Layout */
 .main-container {
     display: grid;
     column-gap: 1em;
-}
-  
-/* 
-Responsive Layout breakpoints. We start 'mobile-first' i.e. we define how the layout should look
-for the smallest screen sizes. In this case we want a single column that spans the main container.
-Because this CSS definition comes first, it will apply by default. Then we override it below with 
-media queries for progressively bigger screen widths
-*/
-.main-container {
     grid-template:
         "ban ban ban ban" minmax(6em, auto)
         " .   .   .   . " minmax(2em, auto)
-        " c1  c1  c1  c1" minmax(30em, auto)
+        " c1  c1  c1  c1" minmax(28em, auto)
         " .   .   .   . " minmax(2em, auto)
-        " c2  c2  c2  c2" minmax(30em, auto)
+        " c2  c2  c2  c2" minmax(28em, auto)
         " .   .   .   . " minmax(2em, auto)
-        " c3  c3  c3  c3" minmax(30em, auto)
+        " c3  c3  c3  c3" minmax(28em, auto)
         " .   .   .   . " minmax(2em, auto)
-        " c4  c4  c4  c4" minmax(30em, auto)
+        " c4  c4  c4  c4" minmax(28em, auto)
         " .   .   .   . " minmax(2em, auto)
-        " c5  c5  c5  c5" minmax(30em, auto)
+        " c5  c5  c5  c5" minmax(28em, auto)
         " .   .   .   . " minmax(2em, auto)
-        " c6  c6  c6  c6" minmax(30em, auto)
+        " c6  c6  c6  c6" minmax(28em, auto)
         " .   .   .   . " minmax(2em, auto)
-        " c7  c7  c7  c7" minmax(30em, auto)
+        " c7  c7  c7  c7" minmax(28em, auto)
         " .   .   .   . " minmax(2em, auto)
-        " c8  c8  c8  c8" minmax(30em, auto)
+        " c8  c8  c8  c8" minmax(28em, auto)
         " .   .   .   . " minmax(2em, auto)
         "foo foo foo foo" minmax(6em, auto);
 }
 
+/* Ipad Layout */
 @media (min-width: 50em) {
     .main-container {
         grid-template:
             "ban ban ban ban ban ban ban ban" minmax(8em, auto)
             " .   .   .   .   .   .   .   . " minmax(2em, auto)
-            " c1  c1  c1  c1  c2  c2  c2  c2" minmax(30em, auto)
+            " c1  c1  c1  c1  c2  c2  c2  c2" minmax(28em, auto)
             " .   .   .   .   .   .   .   . " minmax(2em, auto)
-            " c3  c3  c3  c3  c4  c4  c4  c4" minmax(30em, auto)
+            " .   .   c3  c3  c3  c3  .   . " minmax(28em, auto)
+            " .   .   .   .   .   .   .   . " minmax(4em, auto)
+            " c4  c4  c4  c4  c4  c4  c4  c4" minmax(36em, auto)
+            " .   .   .   .   .   .   .   . " minmax(4em, auto)
+            " c5  c5  c5  c5  c6  c6  c6  c6" minmax(28em, auto)
             " .   .   .   .   .   .   .   . " minmax(2em, auto)
-            " c5  c5  c5  c5  c6  c6  c6  c6" minmax(30em, auto)
-            " .   .   .   .   .   .   .   . " minmax(2em, auto)
-            " c7  c7  c7  c7  c8  c8  c8  c8" minmax(30em, auto)
+            " .   .   c7  c7  c7  c7  .   . " minmax(28em, auto)
+            " .   .   .   .   .   .   .   . " minmax(4em, auto)
+            " c8  c8  c8  c8  c8  c8  c8  c8" minmax(40em, auto)
             " .   .   .   .   .   .   .   . " minmax(2em, auto)
             "foo foo foo foo foo foo foo foo" minmax(6em, auto);
     }
+
+    #cardImage4 {
+        height: 28em;
+    }
+
+    #cardImage8 {
+        height: 28em;
+    }
 }
 
+/* Desktop layout */
 @media (min-width: 75em) {
     .main-container {
         grid-template:
             "ban ban ban ban ban ban ban ban ban ban ban ban" minmax(8em, auto)
             " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
-            " c1  c1  c1  c1  c1  c1  c2  c2  c2  c2  c2  c2" minmax(30em, auto)
-            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
-            " c3  c3  c3  c3  c3  c3  c4  c4  c4  c4  c4  c4" minmax(30em, auto)
-            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
-            " c5  c5  c5  c5  c5  c5  c6  c6  c6  c6  c6  c6" minmax(30em, auto)
-            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
-            " c7  c7  c7  c7  c7  c7  c8  c8  c8  c8  c8  c8" minmax(30em, auto)
+            " c1  c1  c1  c1  c2  c2  c2  c2  c3  c3  c3  c3" minmax(28em, auto)
+            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(4em, auto)
+            " c4  c4  c4  c4  c4  c4  c4  c4  c4  c4  c4  c4" minmax(24em, auto)
+            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(4em, auto)
+            " c5  c5  c5  c5  c6  c6  c6  c6  c7  c7  c7  c7" minmax(28em, auto)
+            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(4em, auto)
+            " c8  c8  c8  c8  c8  c8  c8  c8  c8  c8  c8  c8" minmax(24em, auto)
             " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
             "foo foo foo foo foo foo foo foo foo foo foo foo" minmax(6em, auto);
+    }
+
+    /* This section is to layout card 4 & 8 */ 
+    #card4 {
+        display: grid;
+        column-gap: 1em;
+        grid-template: 
+            "ci4 ci4 ci4 ci4 ci4 ci4 cb4 cb4 cb4 cb4 cb4 cb4" minmax(20em, auto)
+            "ci4 ci4 ci4 ci4 ci4 ci4 cc4 cc4 cc4 cc4 cc4 cc4" minmax(2em, auto);
+    }
+
+    #cardImage4 {
+        width: 36.5em;
+        height: 24em;
+        border-radius: 1em 0  0 1em;
+    } 
+
+    #card8 {
+        display: grid;
+        column-gap: 1em;
+        grid-template: 
+            "ci8 ci8 ci8 ci8 ci8 ci8 cb8 cb8 cb8 cb8 cb8 cb8" minmax(20em, auto)
+            "ci8 ci8 ci8 ci8 ci8 ci8 cc8 cc8 cc8 cc8 cc8 cc8" minmax(2em, auto);
+    }
+
+    #cardImage8 {
+        width: 36.5em;
+        height: 24em;
+        border-radius: 1em 0  0 1em;
     }
 }
